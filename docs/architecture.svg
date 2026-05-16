@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <linearGradient id="gold" x1="0" x2="1">
+      <stop offset="0" stop-color="#f2c96d"/>
+      <stop offset="1" stop-color="#d6a84f"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#d6a84f" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <style>
+      .title { fill: #ffffff; font: 700 34px Arial, sans-serif; }
+      .label { fill: #ffffff; font: 700 20px Arial, sans-serif; }
+      .body { fill: #c9c9c9; font: 15px Arial, sans-serif; }
+      .box { fill: #121212; stroke: #d6a84f; stroke-opacity: .7; rx: 8; }
+      .line { stroke: #d6a84f; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d6a84f"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="760" fill="#080808"/>
+  <rect width="1200" height="760" fill="url(#grid)"/>
+  <text x="60" y="70" class="title">AtomQuest Goal Setting and Tracking Portal</text>
+  <text x="60" y="106" class="body">React frontend, Express API, PostgreSQL data layer, JWT auth, scheduled governance windows</text>
+
+  <rect x="70" y="170" width="260" height="160" class="box"/>
+  <text x="100" y="220" class="label">Frontend</text>
+  <text x="100" y="254" class="body">Vite React</text>
+  <text x="100" y="278" class="body">Role routing</text>
+  <text x="100" y="302" class="body">Dark gold premium UI</text>
+
+  <rect x="470" y="150" width="280" height="200" class="box"/>
+  <text x="500" y="200" class="label">Node + Express API</text>
+  <text x="500" y="234" class="body">JWT authentication</text>
+  <text x="500" y="258" class="body">Goal validation and approval</text>
+  <text x="500" y="282" class="body">Check-ins and scoring</text>
+  <text x="500" y="306" class="body">Exports and audit logs</text>
+
+  <rect x="880" y="170" width="250" height="160" class="box"/>
+  <text x="910" y="220" class="label">PostgreSQL</text>
+  <text x="910" y="254" class="body">Users and hierarchy</text>
+  <text x="910" y="278" class="body">Cycles, goals, check-ins</text>
+  <text x="910" y="302" class="body">Audit trail</text>
+
+  <rect x="180" y="470" width="250" height="150" class="box"/>
+  <text x="210" y="520" class="label">Schedulers</text>
+  <text x="210" y="554" class="body">Cron window sync</text>
+  <text x="210" y="578" class="body">Reminder hooks</text>
+
+  <rect x="520" y="470" width="250" height="150" class="box"/>
+  <text x="550" y="520" class="label">Reporting</text>
+  <text x="550" y="554" class="body">CSV and Excel exports</text>
+  <text x="550" y="578" class="body">Dashboard analytics</text>
+
+  <rect x="840" y="470" width="250" height="150" class="box"/>
+  <text x="870" y="520" class="label">Deployment</text>
+  <text x="870" y="554" class="body">Vercel or Netlify frontend</text>
+  <text x="870" y="578" class="body">Render API and Postgres</text>
+
+  <path class="line" d="M330 250 C380 250 420 250 470 250"/>
+  <path class="line" d="M750 250 C800 250 830 250 880 250"/>
+  <path class="line" d="M610 350 L610 470"/>
+  <path class="line" d="M470 300 C380 360 300 400 305 470"/>
+  <path class="line" d="M750 300 C850 360 950 400 965 470"/>
+</svg>

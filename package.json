@@ -1,0 +1,22 @@
+{
+  "name": "atomquest-goal-portal",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Full-stack Goal Setting and Tracking Portal for AtomQuest Hackathon 1.0.",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace server",
+    "dev:server": "npm run dev --workspace server",
+    "dev:client": "npm run dev --workspace client",
+    "db:migrate": "npm run db:migrate --workspace server",
+    "db:seed": "npm run db:seed --workspace server",
+    "build": "npm run build --workspace client",
+    "start": "npm run start --workspace server"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
