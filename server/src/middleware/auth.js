@@ -12,7 +12,7 @@ export async function requireAuth(req, res, next) {
     }
 
     // MOCK: Read user directly from JWT payload (no DB lookup needed)
-    const payload = jwt.verify(token, process.env.JWT_SECRET || "secret");
+    const payload = jwt.verify(token, env.jwtSecret || "secret");
     if (!payload?.user) {
       return res.status(401).json({ message: "Invalid token" });
     }
