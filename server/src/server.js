@@ -43,19 +43,25 @@ app.use("/api/reports", reportRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-const server = app.listen(env.port, async () => {
-  console.log(`AtomQuest Goal Portal API running on port ${env.port}`);
-  await syncCycleWindows().catch((error) => console.warn("Initial cycle sync skipped:", error.message));
-  if (env.enableScheduler) startScheduler();
-});
+// Export for Vercel serverless environment
+export default app;
 
-process.on("SIGTERM", shutdown);
-process.on("SIGINT", shutdown);
-
-async function shutdown() {
-  console.log("Shutting down API");
-  server.close(async () => {
-    await pool.end();
-    process.exit(0);
+if (process.env.NODE_ENV !== "production" && process.env.VERCEL !== "1") {
+  const server = app.listen(env.port, async () => {
+    console.log(`AtomQuest Goal Portal API running on port ${env.port}`);
+    await syncCycleWindows().catch((error) => console.warn("Initial cycle sync skipped:", error.message));
+    if (env.enableScheduler) startScheduler();
   });
+
+  process.on("SIGTERM", shutdown);
+  process.on("SIGINT", shutdown);
+
+  async function shutdown() {
+    console.log("Shutting down API");
+    server.close(async () => {
+      await pool.end();
+      process.exit(0);
+    });
+  }
 }
+
