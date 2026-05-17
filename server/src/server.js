@@ -18,12 +18,32 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: env.corsOrigin.split(",").map((origin) => origin.trim()),
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps, curl, postman)
+      if (!origin) return callback(null, true);
+      
+      const allowedOrigins = env.corsOrigin.split(",").map((o) => o.trim());
+      const isLocalhost = origin.includes("localhost") || origin.includes("127.0.0.1");
+      const isVercel = origin.endsWith(".vercel.app");
+      
+      if (isLocalhost || isVercel || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`Origin ${origin} not allowed by CORS`));
+      }
+    },
     credentials: true
   })
 );
 app.use(express.json({ limit: "1mb" }));
 app.use(morgan(env.nodeEnv === "production" ? "combined" : "dev"));
+
+app.get("/", (req, res) => {
+  res.json({
+    status: "active",
+    message: "AtomQuest API Server is running successfully. API endpoints are available under /api"
+  });
+});
 
 app.get("/api/health", (req, res) => {
   res.json({
